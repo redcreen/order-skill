@@ -1,0 +1,46 @@
+{
+  "name": "openclaw-order",
+  "version": "0.1.0",
+  "description": "Plugin-first wrapper for the local-first order operations runtime.",
+  "author": {
+    "name": "redcreen",
+    "email": "support@example.com",
+    "url": "https://github.com/redcreen"
+  },
+  "homepage": "https://github.com/redcreen/openclaw-skills",
+  "repository": "https://github.com/redcreen/openclaw-skills",
+  "license": "MIT",
+  "keywords": [
+    "order",
+    "operations",
+    "local-first",
+    "plugin"
+  ],
+  "skills": "./skills/",
+  "x-openclaw": {
+    "installationScope": "explicit_agent_only",
+    "defaultEnabled": false,
+    "requiresTargetAgent": true,
+    "bindingFile": "./.codex-plugin/agent-binding.json"
+  },
+  "interface": {
+    "displayName": "OpenClaw Order",
+    "shortDescription": "Agent-bound plugin-first order operations",
+    "longDescription": "Install the order system as a plugin, bind it to one explicit agent, and force order work through script-backed execution instead of soft chat-only behavior.",
+    "developerName": "redcreen",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/redcreen/openclaw-skills",
+    "privacyPolicyURL": "https://github.com/redcreen/openclaw-skills",
+    "termsOfServiceURL": "https://github.com/redcreen/openclaw-skills",
+    "defaultPrompt": [
+      "记录这条订单现场信息并生成确认草稿",
+      "刷新今天的 order 控制塔并生成日报",
+      "把这笔收付款分配到对应的应收应付"
+    ],
+    "brandColor": "#1F6B5C"
+  }
+}

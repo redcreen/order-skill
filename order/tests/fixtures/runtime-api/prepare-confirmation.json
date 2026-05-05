@@ -1,0 +1,16 @@
+{
+  "request_id": "fixture-prepare-confirmation",
+  "command": "prepare-confirmation",
+  "data_root": "__DATA_ROOT__",
+  "actor": {
+    "agent_id": "runtime-api-test",
+    "label": "runtime-api-smoke"
+  },
+  "source": {
+    "adapter": "cli"
+  },
+  "payload": {
+    "workflow_draft_id": "__WORKFLOW_DRAFT_ID__",
+    "actor_label": "runtime-api-smoke"
+  }
+}

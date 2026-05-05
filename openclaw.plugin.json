@@ -1,0 +1,55 @@
+{
+  "id": "openclaw-order-runtime-guard",
+  "name": "OpenClaw Order Runtime Guard",
+  "description": "Plugin-first install unit for the local-first order system with explicit agent binding and hard execution rules.",
+  "version": "0.1.0",
+  "skills": [
+    "./plugins/openclaw-order/skills"
+  ],
+  "uiHints": {
+    "enabled": {
+      "label": "Enabled",
+      "help": "Enable the order runtime guard plugin."
+    },
+    "pythonBin": {
+      "label": "Python Binary",
+      "help": "Python executable used for the bundled order runtime scripts."
+    },
+    "dataRoot": {
+      "label": "Order Data Root",
+      "help": "Override the local-first order data root. Defaults to ~/Documents/openclaw-order."
+    },
+    "agentIds": {
+      "label": "Order Agent IDs",
+      "help": "Exact agent IDs that should enter the order runtime guard."
+    },
+    "injectRoleContract": {
+      "label": "Inject Role Contract",
+      "help": "Inject order runtime guidance into matching agent sessions."
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "pythonBin": {
+        "type": "string"
+      },
+      "dataRoot": {
+        "type": "string"
+      },
+      "agentIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "injectRoleContract": {
+        "type": "boolean"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "request_id": "fixture-persist-input",
+  "command": "persist-input",
+  "data_root": "__DATA_ROOT__",
+  "actor": {
+    "agent_id": "runtime-api-test",
+    "label": "runtime-api-smoke"
+  },
+  "source": {
+    "adapter": "cli",
+    "channel_type": "local-test",
+    "channel_session_key": "runtime-api-fixture"
+  },
+  "payload": {
+    "text": "王总小兔子 100 个，单价 12.5，先记录。",
+    "channel_type": "local-test",
+    "channel_session_key": "runtime-api-fixture",
+    "source_actor": "runtime-api-smoke",
+    "source_message_id": "fixture-persist-input-1",
+    "raw_payload": {
+      "intent_hint": "sales_order"
+    }
+  }
+}

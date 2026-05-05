@@ -1,0 +1,144 @@
+{
+  "manifest_version": "2026-05-04.phase5",
+  "runtime_api": {
+    "entrypoint": "order/scripts/order_runtime_api.py",
+    "request": {
+      "required": ["command"],
+      "optional": ["request_id", "data_root", "actor", "source", "payload"],
+      "payload_type": "object"
+    },
+    "response": {
+      "fields": ["request_id", "command", "status", "result", "error", "warnings"],
+      "success_status": "ok",
+      "error_status": "error"
+    }
+  },
+  "adapter_contract": {
+    "openclaw_wrapper": "plugins/openclaw-order/scripts/order_hard_execute.py",
+    "agent_scope": "explicit_agent_only",
+    "hard_execution": "Adapters must call the runtime API or the bound wrapper. OpenClaw agents must not call individual runtime scripts directly.",
+    "formal_write_guard": "Formal business writes require runtime draft, confirmation, and commit-token checks."
+  },
+  "commands": [
+    {
+      "name": "init-runtime",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Initialize local runtime directories and SQLite schema."
+    },
+    {
+      "name": "persist-input",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Persist raw inbound order-related input before interpretation."
+    },
+    {
+      "name": "open-draft",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Open or update a guided intake draft from persisted input."
+    },
+    {
+      "name": "prepare-confirmation",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Generate a confirmation preview and commit token when the draft is ready."
+    },
+    {
+      "name": "commit-draft",
+      "mode": "direct_runtime_function",
+      "formal_write": true,
+      "description": "Commit a ready workflow draft after explicit confirmation token validation."
+    },
+    {
+      "name": "resolve-association",
+      "mode": "direct_runtime_function",
+      "formal_write": true,
+      "description": "Resolve a pending association and update related draft context."
+    },
+    {
+      "name": "allocate",
+      "mode": "direct_runtime_function",
+      "formal_write": true,
+      "description": "Allocate one cash transaction across receivable/payable/refund settlement targets. Must be called first with dry_run=true to receive a confirmation token; formal allocation requires confirm_token."
+    },
+    {
+      "name": "refresh-control-tower",
+      "mode": "direct_runtime_function",
+      "formal_write": true,
+      "description": "Refresh derived commitments, followups, exceptions, and alerts."
+    },
+    {
+      "name": "daily-report",
+      "mode": "direct_runtime_function",
+      "formal_write": true,
+      "description": "Generate the daily order operations report."
+    },
+    {
+      "name": "history-search",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Search persisted raw inputs and imported legacy evidence."
+    },
+    {
+      "name": "history-show",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Show one persisted history item in detail."
+    },
+    {
+      "name": "history-replay",
+      "mode": "direct_runtime_function",
+      "formal_write": false,
+      "description": "Replay raw input history by channel session or business object thread."
+    },
+    {
+      "name": "history-backfill",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "Open a backfill draft from one imported legacy/history item."
+    },
+    {
+      "name": "association-candidates",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "List candidate targets for one pending association."
+    },
+    {
+      "name": "resolve-pending",
+      "mode": "compat_subprocess",
+      "formal_write": true,
+      "description": "Resolve one pending association by direct candidate target."
+    },
+    {
+      "name": "backfill-queue",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "List history backfill queue items."
+    },
+    {
+      "name": "backfill-ready",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "List history backfill drafts and readiness state."
+    },
+    {
+      "name": "backfill-finalize",
+      "mode": "compat_subprocess",
+      "formal_write": true,
+      "description": "Preview or commit a history backfill draft."
+    },
+    {
+      "name": "smoke-runtime",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "Run runtime foundation smoke checks."
+    },
+    {
+      "name": "smoke-stage89",
+      "mode": "compat_subprocess",
+      "formal_write": false,
+      "description": "Run guided-intake, commit, settlement, control-tower smoke checks."
+    }
+  ]
+}

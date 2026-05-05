@@ -1,0 +1,5 @@
+interface:
+  display_name: "Order Suite"
+  short_description: "Persist fragmented order input first, guide natural-language intake, and build a local-first order operations runtime"
+  default_prompt: "Use the local-first order suite proactively: persist all inbound order-related input first, keep non-order content out of the formal order thread, guide fragmented natural-language input through draft, confirm, then commit, and preserve continuity across restart, /new, and context loss."
+

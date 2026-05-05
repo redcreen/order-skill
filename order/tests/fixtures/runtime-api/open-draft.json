@@ -1,0 +1,29 @@
+{
+  "request_id": "fixture-open-draft",
+  "command": "open-draft",
+  "data_root": "__DATA_ROOT__",
+  "actor": {
+    "agent_id": "runtime-api-test",
+    "label": "runtime-api-smoke"
+  },
+  "source": {
+    "adapter": "cli"
+  },
+  "payload": {
+    "inbox_item_id": "__INBOX_ITEM_ID__",
+    "intent_type": "sales_order",
+    "target_object_type": "sales_order",
+    "target_action": "create",
+    "summary_text": "王总小兔子订单，100 个，单价 12.5。",
+    "draft_fields": {
+      "order_no": "SO-RUNTIME-API-001",
+      "customer_name": "王总",
+      "product_name": "小兔子",
+      "qty": 100,
+      "unit": "个",
+      "confirmed_unit_price": 12.5,
+      "confirmed_total_amount": 1250
+    },
+    "actor_label": "runtime-api-smoke"
+  }
+}

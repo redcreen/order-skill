@@ -1,0 +1,39 @@
+{
+  "name": "@redcreen/order-skill",
+  "version": "0.1.0",
+  "description": "Local-first order operations runtime and OpenClaw plugin adapter",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "order",
+    "order-skill",
+    "openclaw",
+    "openclaw-plugin",
+    "runtime-guard",
+    "local-first",
+    "operations"
+  ],
+  "files": [
+    "index.js",
+    "src/**/*.js",
+    "plugins/openclaw-order/**/*",
+    "order/**/*",
+    "openclaw.plugin.json",
+    "README.md",
+    "README.zh-CN.md",
+    "docs/**/*",
+    "scripts/**/*",
+    "!**/__pycache__/**",
+    "!**/*.pyc",
+    "!plugins/openclaw-order/.codex-plugin/agent-binding.json"
+  ],
+  "peerDependencies": {
+    "openclaw": "*"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ]
+  }
+}
