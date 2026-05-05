@@ -1,0 +1,261 @@
+{
+  "candidates": [
+    {
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "excerpt": "T218 / 目标：生成 handoff；当前无需人类操作。 每次功能改完测试完，自动提交github。 每次改完测试完自动部署到本地openclaw，需要重启openclaw的话，那就自动重启下（可以通过openclaw gateway restart 来重启）。 不要硬编码。 有新功能后要及时更新文档，文档要简洁明了，方便后续维护和使用。 测试要覆盖到新功能，测试用例要清晰明了，方便后续维护和使用。 如果context大小超过...",
+          "messageId": "msg-0003",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T03"
+        },
+        {
+          "excerpt": "You are a helpful assistant. You will be presented with a user prompt, and your job is to provide a short title for a task that will be created from that prompt. The tasks typically have to do with coding-related task...",
+          "messageId": "msg-0005",
+          "receivedAt": "2026-05-05T13:21:12Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T05"
+        }
+      ],
+      "firstSeen": "2026-05-05T13:21:03Z",
+      "id": "learn-147ef7602675",
+      "keywords": [
+        "workaround",
+        "硬编码",
+        "不可复用",
+        "短期",
+        "fallback",
+        "prompt",
+        "mask"
+      ],
+      "lastSeen": "2026-05-05T13:21:12Z",
+      "occurrenceCount": 2,
+      "rationale": "Repeated corrections show that short-term fixes often violate the intended reusable project direction.",
+      "ruleText": "Do not replace reusable project behavior with one-off workaround, hardcoded, prompt-only, mask-only, or short-term fallback changes unless the user explicitly accepts that tradeoff.",
+      "stableKey": "correction.anti-workaround-reuse",
+      "status": "accepted",
+      "suggestedDecision": "warn",
+      "suggestedScope": "domain-pack",
+      "title": "Avoid one-off workaround behavior when a reusable path is required",
+      "updatedAt": "2026-05-05T15:08:19Z"
+    },
+    {
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "excerpt": "T218 / 目标：生成 handoff；当前无需人类操作。 每次功能改完测试完，自动提交github。 每次改完测试完自动部署到本地openclaw，需要重启openclaw的话，那就自动重启下（可以通过openclaw gateway restart 来重启）。 不要硬编码。 有新功能后要及时更新文档，文档要简洁明了，方便后续维护和使用。 测试要覆盖到新功能，测试用例要清晰明了，方便后续维护和使用。 如果context大小超过...",
+          "messageId": "msg-0003",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T03"
+        },
+        {
+          "excerpt": "You are a helpful assistant. You will be presented with a user prompt, and your job is to provide a short title for a task that will be created from that prompt. The tasks typically have to do with coding-related task...",
+          "messageId": "msg-0005",
+          "receivedAt": "2026-05-05T13:21:12Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T05"
+        }
+      ],
+      "firstSeen": "2026-05-05T13:21:03Z",
+      "id": "learn-436e9e2ac691",
+      "keywords": [
+        "workaround",
+        "主线",
+        "可复用",
+        "可行性",
+        "测试",
+        "硬编码",
+        "证据",
+        "验证"
+      ],
+      "lastSeen": "2026-05-05T13:21:12Z",
+      "occurrenceCount": 2,
+      "origin": "semantic-induction",
+      "rationale": "Repeated corrections connect evidence requirements with avoiding one-off replacement behavior.",
+      "ruleText": "When reusable mainline behavior is at stake, verify the smallest representative path before landing a workaround, fallback, or hardcoded change.",
+      "semanticConcepts": [
+        "evidence-first",
+        "reuse-mainline"
+      ],
+      "stableKey": "semantic.evidence-first.reuse-mainline",
+      "status": "accepted",
+      "suggestedDecision": "warn",
+      "suggestedScope": "domain-pack",
+      "title": "Validate reusable paths instead of landing speculative workarounds",
+      "updatedAt": "2026-05-05T15:08:19Z"
+    },
+    {
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "excerpt": "你分析下openclaw 最新版本，是否支持wrapper ，目前order skill的实现方式是在openclaw中wrapper，好像是魔改了代码（我记不清了），看下最新版本的openclaw是否支持wrapper",
+          "messageId": "msg-0001",
+          "receivedAt": "2026-05-05T13:20:47Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T01"
+        },
+        {
+          "excerpt": "You are a helpful assistant. You will be presented with a user prompt, and your job is to provide a short title for a task that will be created from that prompt. The tasks typically have to do with coding-related task...",
+          "messageId": "msg-0002",
+          "receivedAt": "2026-05-05T13:20:53Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T02"
+        },
+        {
+          "excerpt": "那现在我们的实现 能够稳定的wrapper么？ 你需要测试下；",
+          "messageId": "msg-0008",
+          "receivedAt": "2026-05-05T13:29:04Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T08"
+        },
+        {
+          "excerpt": "openclaw 最新版本 是否支持了agent 级别的wrapper？",
+          "messageId": "msg-0011",
+          "receivedAt": "2026-05-05T13:35:35Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T11"
+        },
+        {
+          "excerpt": "hook 上下文里有 ctx.agentId、ctx.sessionKey、ctx.sessionId，所以插件可以只对某个 agent 生效。=》这个是我们当前的实现方式么？",
+          "messageId": "msg-0012",
+          "receivedAt": "2026-05-05T13:39:17Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T12"
+        }
+      ],
+      "firstSeen": "2026-05-05T13:20:47Z",
+      "id": "learn-6f7260d3c9cb",
+      "keywords": [
+        "codex app",
+        "hook",
+        "热加载",
+        "wrapper",
+        "message ingress",
+        "传输层"
+      ],
+      "lastSeen": "2026-05-05T13:39:17Z",
+      "occurrenceCount": 5,
+      "rationale": "Repeated corrections show that host integration claims need direct transport evidence.",
+      "ruleText": "When changing Codex App, VS Code, hook, wrapper, or message-ingress behavior, verify the actual host transport path with a direct smoke before claiming all messages enter the loop.",
+      "stableKey": "correction.host-ingress-proof",
+      "status": "accepted",
+      "suggestedDecision": "warn",
+      "suggestedScope": "user-global",
+      "title": "Prove host/message ingress behavior before assuming transport control",
+      "updatedAt": "2026-05-05T15:08:19Z"
+    },
+    {
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "excerpt": "T218 / 目标：生成 handoff；当前无需人类操作。 每次功能改完测试完，自动提交github。 每次改完测试完自动部署到本地openclaw，需要重启openclaw的话，那就自动重启下（可以通过openclaw gateway restart 来重启）。 不要硬编码。 有新功能后要及时更新文档，文档要简洁明了，方便后续维护和使用。 测试要覆盖到新功能，测试用例要清晰明了，方便后续维护和使用。 如果context大小超过...",
+          "messageId": "msg-0003",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T03"
+        },
+        {
+          "excerpt": "Generate 0 to 3 ambient suggestions for this local project: /Users/redcreen/Project/order-skill Use recent Codex threads from this project to understand ongoing work and the kinds of follow-ups the user actually acts...",
+          "messageId": "msg-0004",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T04"
+        },
+        {
+          "excerpt": "You are a helpful assistant. You will be presented with a user prompt, and your job is to provide a short title for a task that will be created from that prompt. The tasks typically have to do with coding-related task...",
+          "messageId": "msg-0005",
+          "receivedAt": "2026-05-05T13:21:12Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T05"
+        }
+      ],
+      "firstSeen": "2026-05-05T13:21:03Z",
+      "id": "learn-be6337d99b9d",
+      "keywords": [
+        "loop",
+        "pipeline",
+        "人类",
+        "介入",
+        "接受",
+        "直到完成",
+        "确认",
+        "自动继续"
+      ],
+      "lastSeen": "2026-05-05T13:21:12Z",
+      "occurrenceCount": 3,
+      "origin": "semantic-induction",
+      "rationale": "Repeated corrections connect human decisions with preserving the enclosing task loop.",
+      "ruleText": "Represent human confirmation as a loop task; after the human decision is processed, resume the original pipeline automatically unless the user explicitly pauses or stops.",
+      "semanticConcepts": [
+        "human-decision",
+        "loop-continuity"
+      ],
+      "stableKey": "semantic.human-decision.loop-continuity",
+      "status": "accepted",
+      "suggestedDecision": "warn",
+      "suggestedScope": "user-global",
+      "title": "Keep human confirmation inside the task loop",
+      "updatedAt": "2026-05-05T15:08:19Z"
+    },
+    {
+      "confidence": 0.8500000000000001,
+      "evidence": [
+        {
+          "excerpt": "T218 / 目标：生成 handoff；当前无需人类操作。 每次功能改完测试完，自动提交github。 每次改完测试完自动部署到本地openclaw，需要重启openclaw的话，那就自动重启下（可以通过openclaw gateway restart 来重启）。 不要硬编码。 有新功能后要及时更新文档，文档要简洁明了，方便后续维护和使用。 测试要覆盖到新功能，测试用例要清晰明了，方便后续维护和使用。 如果context大小超过...",
+          "messageId": "msg-0003",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T03"
+        },
+        {
+          "excerpt": "Generate 0 to 3 ambient suggestions for this local project: /Users/redcreen/Project/order-skill Use recent Codex threads from this project to understand ongoing work and the kinds of follow-ups the user actually acts...",
+          "messageId": "msg-0004",
+          "receivedAt": "2026-05-05T13:21:03Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T04"
+        },
+        {
+          "excerpt": "You are a helpful assistant. You will be presented with a user prompt, and your job is to provide a short title for a task that will be created from that prompt. The tasks typically have to do with coding-related task...",
+          "messageId": "msg-0005",
+          "receivedAt": "2026-05-05T13:21:12Z",
+          "source": "codex-app-user-prompt-hook",
+          "taskId": "T05"
+        }
+      ],
+      "firstSeen": "2026-05-05T13:21:03Z",
+      "id": "learn-f67a42e8cad7",
+      "keywords": [
+        "一口气",
+        "持续推进",
+        "继续，直到",
+        "做一步停一步",
+        "loop",
+        "pipeline",
+        "completion gate"
+      ],
+      "lastSeen": "2026-05-05T13:21:12Z",
+      "occurrenceCount": 3,
+      "rationale": "Repeated corrections show that stopping after one step breaks long-running project execution.",
+      "ruleText": "For non-trivial execution work, stay inside the task loop and continue automatically until completion, blocker, human-decision gate, or explicit stop instruction.",
+      "stableKey": "correction.pipeline-continuity",
+      "status": "accepted",
+      "suggestedDecision": "warn",
+      "suggestedScope": "user-global",
+      "title": "Continue inside the task loop until the completion gate",
+      "updatedAt": "2026-05-05T15:08:19Z"
+    }
+  ],
+  "project": "order-skill",
+  "registryPath": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+  "schema": "project-assistant.ptl-learning-review.v1",
+  "summary": {
+    "acceptedLocal": 5,
+    "acceptedRegistry": 7,
+    "pending": 0,
+    "rejected": 0,
+    "snoozed": 0
+  },
+  "updatedAt": "2026-05-05T15:08:19Z"
+}

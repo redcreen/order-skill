@@ -1,0 +1,61 @@
+{
+  "changedPaths": [
+    ".codex/codex-app-loop.json",
+    ".codex/message-ingress.json",
+    ".codex/ptl-policy/",
+    ".codex/task-pipeline.json"
+  ],
+  "currentSignal": {
+    "automaticReviewTrigger": "unknown",
+    "gate": "unknown",
+    "signal": "unknown"
+  },
+  "decision": "block",
+  "domainPacks": [
+    "image-generation",
+    "plugin-runtime",
+    "order-runtime"
+  ],
+  "generatedAt": "2026-05-05T14:03:44Z",
+  "hits": [
+    {
+      "decision": "block",
+      "evidence": [
+        ".codex/COMMANDS.md",
+        ".codex/control-surface.json"
+      ],
+      "reason": "required control-surface files are missing",
+      "ruleId": "project-assistant.control-surface.required-files"
+    },
+    {
+      "decision": "warn",
+      "evidence": [
+        "prompt"
+      ],
+      "reason": "Do not replace reusable project behavior with one-off workaround, hardcoded, prompt-only, mask-only, or short-term fallback changes unless the user explicitly accepts that tradeoff.",
+      "ruleId": "learned.learn-147ef7602675"
+    },
+    {
+      "decision": "warn",
+      "evidence": [
+        "hook"
+      ],
+      "reason": "When changing Codex App, VS Code, hook, wrapper, or message-ingress behavior, verify the actual host transport path with a direct smoke before claiming all messages enter the loop.",
+      "ruleId": "learned.learn-6f7260d3c9cb"
+    }
+  ],
+  "learnedRuleCount": 7,
+  "learningReview": {
+    "acceptedRegistry": 7,
+    "error": "",
+    "path": ".codex/ptl-policy/learning-review.json",
+    "pending": 0
+  },
+  "mode": "execute",
+  "officialModules": [],
+  "policyHash": "c7908cc4ef885dab",
+  "policyPath": ".codex/ptl-policy/project-policy.json",
+  "project": "order-skill",
+  "schema": "project-assistant.ptl-preflight.v1",
+  "signal": "red"
+}

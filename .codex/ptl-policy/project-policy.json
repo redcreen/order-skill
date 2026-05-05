@@ -1,0 +1,439 @@
+{
+  "domainPacks": [
+    "image-generation",
+    "plugin-runtime",
+    "order-runtime"
+  ],
+  "generatedAt": "2026-05-05T14:03:43Z",
+  "generatedBy": "project-assistant",
+  "learnedRegistryPath": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+  "learnedRuleCount": 7,
+  "officialModules": [],
+  "policyHash": "c7908cc4ef885dab",
+  "project": "order-skill",
+  "rules": [
+    {
+      "check": {
+        "paths": [
+          ".codex/brief.md",
+          ".codex/plan.md",
+          ".codex/status.md",
+          ".codex/COMMANDS.md",
+          ".codex/control-surface.json"
+        ],
+        "type": "required_files_exist"
+      },
+      "description": "Required control-surface files must exist before project-assistant can produce reliable PTL decisions.",
+      "id": "project-assistant.control-surface.required-files",
+      "scope": "project-local",
+      "severity": "block",
+      "source": {
+        "path": ".codex/control-surface.json",
+        "type": "control-surface"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "type": "current_escalation_gate"
+      },
+      "description": "If the current escalation gate requires user decision, PTL preflight must stop automatic continuation.",
+      "id": "project-assistant.escalation.require-human-review",
+      "scope": "project-local",
+      "severity": "require-review",
+      "source": {
+        "path": ".codex/status.md",
+        "type": "control-surface"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "type": "changed_path_match"
+      },
+      "description": "Image-generation mainline work should distinguish reusable pipeline evidence from one-off prompt, mask, seed, or fallback tuning.",
+      "id": "domain.image-generation.reusable-mainline-contract",
+      "scope": "domain-pack",
+      "severity": "warn",
+      "source": {
+        "domain": "image-generation",
+        "type": "seeded-domain-pack"
+      },
+      "status": "warn",
+      "trigger": {
+        "modes": [
+          "continue",
+          "execute",
+          "progress"
+        ],
+        "paths": [
+          "apps/product-restyle-lab/**",
+          "**/product-restyle-lab/**",
+          "**/*prompt*",
+          "**/*mask*",
+          "docs/reference/**/*vision*",
+          "docs/reference/**/*sdxl*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "type": "changed_path_match"
+      },
+      "description": "Plugin/runtime changes should keep install metadata, gateway/runtime smoke, and public docs aligned.",
+      "id": "domain.plugin-runtime.release-and-runtime-smoke",
+      "scope": "domain-pack",
+      "severity": "warn",
+      "source": {
+        "domain": "plugin-runtime",
+        "type": "seeded-domain-pack"
+      },
+      "status": "warn",
+      "trigger": {
+        "modes": [
+          "continue",
+          "execute",
+          "progress",
+          "release"
+        ],
+        "paths": [
+          "openclaw.plugin.json",
+          "package.json",
+          "src/plugin/**",
+          "plugins/**",
+          "**/SKILL.md"
+        ]
+      }
+    },
+    {
+      "check": {
+        "type": "changed_path_match"
+      },
+      "description": "Order adapters should call the runtime API instead of duplicating business logic or starting external writes before dry-run contracts.",
+      "id": "domain.order-runtime.adapter-boundary",
+      "scope": "domain-pack",
+      "severity": "warn",
+      "source": {
+        "domain": "order-runtime",
+        "type": "seeded-domain-pack"
+      },
+      "status": "warn",
+      "trigger": {
+        "modes": [
+          "continue",
+          "execute",
+          "progress"
+        ],
+        "paths": [
+          "order/**",
+          "plugins/openclaw-order/**",
+          "order-host-plugin/**"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "workaround",
+          "硬编码",
+          "不可复用",
+          "短期",
+          "fallback",
+          "prompt",
+          "mask"
+        ],
+        "stableKey": "correction.anti-workaround-reuse",
+        "type": "accepted_learning_rule"
+      },
+      "description": "Do not replace reusable project behavior with one-off workaround, hardcoded, prompt-only, mask-only, or short-term fallback changes unless the user explicitly accepts that tradeoff.",
+      "id": "learned.learn-147ef7602675",
+      "scope": "domain-pack",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "correction.anti-workaround-reuse",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "codex app",
+          "hook",
+          "热加载",
+          "wrapper",
+          "message ingress",
+          "传输层"
+        ],
+        "stableKey": "correction.host-ingress-proof",
+        "type": "accepted_learning_rule"
+      },
+      "description": "When changing Codex App, VS Code, hook, wrapper, or message-ingress behavior, verify the actual host transport path with a direct smoke before claiming all messages enter the loop.",
+      "id": "learned.learn-6f7260d3c9cb",
+      "scope": "user-global",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "correction.host-ingress-proof",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "验证",
+          "证据",
+          "事实",
+          "假设",
+          "文字游戏",
+          "深入验证"
+        ],
+        "stableKey": "correction.precise-technical-discussion",
+        "type": "accepted_learning_rule"
+      },
+      "description": "Do not present an unverified path as implemented fact; label assumptions, testability, and evidence before asking the human to accept a technical direction.",
+      "id": "learned.learn-a06d51878397",
+      "scope": "user-global",
+      "severity": "observe",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "correction.precise-technical-discussion",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "一口气",
+          "持续推进",
+          "继续，直到",
+          "做一步停一步",
+          "loop",
+          "pipeline",
+          "completion gate"
+        ],
+        "stableKey": "correction.pipeline-continuity",
+        "type": "accepted_learning_rule"
+      },
+      "description": "For non-trivial execution work, stay inside the task loop and continue automatically until completion, blocker, human-decision gate, or explicit stop instruction.",
+      "id": "learned.learn-f67a42e8cad7",
+      "scope": "user-global",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "correction.pipeline-continuity",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "人类",
+          "介入",
+          "回复",
+          "接受",
+          "明确",
+          "清楚",
+          "确认",
+          "简单"
+        ],
+        "stableKey": "semantic.clear-response.human-decision",
+        "type": "accepted_learning_rule"
+      },
+      "description": "When human input is required, show the current pending items and the exact one-line reply format; do not rely on prior context or vague wording.",
+      "id": "learned.learn-3a576455365b",
+      "scope": "user-global",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "semantic.clear-response.human-decision",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "loop",
+          "pipeline",
+          "人类",
+          "介入",
+          "接受",
+          "直到完成",
+          "确认",
+          "自动继续"
+        ],
+        "stableKey": "semantic.human-decision.loop-continuity",
+        "type": "accepted_learning_rule"
+      },
+      "description": "Represent human confirmation as a loop task; after the human decision is processed, resume the original pipeline automatically unless the user explicitly pauses or stops.",
+      "id": "learned.learn-be6337d99b9d",
+      "scope": "user-global",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "semantic.human-decision.loop-continuity",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    },
+    {
+      "check": {
+        "keywords": [
+          "workaround",
+          "主线",
+          "可复用",
+          "可行性",
+          "测试",
+          "硬编码",
+          "证据",
+          "验证"
+        ],
+        "stableKey": "semantic.evidence-first.reuse-mainline",
+        "type": "accepted_learning_rule"
+      },
+      "description": "When reusable mainline behavior is at stake, verify the smallest representative path before landing a workaround, fallback, or hardcoded change.",
+      "id": "learned.learn-436e9e2ac691",
+      "scope": "domain-pack",
+      "severity": "warn",
+      "source": {
+        "path": "/Users/redcreen/.codex/project-assistant/learned-registry.json",
+        "stableKey": "semantic.evidence-first.reuse-mainline",
+        "type": "learned-registry"
+      },
+      "status": "accepted",
+      "trigger": {
+        "modes": [
+          "continue",
+          "progress",
+          "execute",
+          "release"
+        ],
+        "paths": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "schema": "project-assistant.ptl-policy.v1",
+  "sourceDocuments": [
+    ".codex/brief.md",
+    ".codex/plan.md",
+    ".codex/status.md",
+    "README.md",
+    "README.zh-CN.md",
+    "docs/README.md",
+    "docs/README.zh-CN.md",
+    "docs/architecture.md",
+    "docs/architecture.zh-CN.md",
+    "docs/roadmap.md",
+    "docs/roadmap.zh-CN.md",
+    "docs/test-plan.md",
+    "docs/test-plan.zh-CN.md",
+    ".codex/modules/order.md",
+    "docs/reference/README.md",
+    "docs/reference/README.zh-CN.md",
+    "docs/reference/data-model.md",
+    "docs/reference/data-model.zh-CN.md",
+    "docs/reference/development-plan.md",
+    "docs/reference/development-plan.zh-CN.md",
+    "docs/reference/operating-model.md",
+    "docs/reference/operating-model.zh-CN.md",
+    "docs/reference/overview.md",
+    "docs/reference/overview.zh-CN.md",
+    "docs/reference/test-realism-review.md",
+    "docs/reference/test-realism-review.zh-CN.md"
+  ],
+  "tier": "unknown"
+}
