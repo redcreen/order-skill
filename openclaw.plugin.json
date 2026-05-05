@@ -3,6 +3,12 @@
   "name": "OpenClaw Order Runtime Guard",
   "description": "Plugin-first install unit for the local-first order system with explicit agent binding and hard execution rules.",
   "version": "0.1.0",
+  "activation": {
+    "onStartup": true,
+    "onCapabilities": [
+      "hook"
+    ]
+  },
   "skills": [
     "./plugins/openclaw-order/skills"
   ],
