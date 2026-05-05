@@ -1,8 +1,7 @@
 {
   "changedPaths": [
-    ".codex/codex-app-loop.json",
-    ".codex/message-ingress.json",
-    ".codex/ptl-policy/",
+    ".codex/ptl-policy/learning-review.json",
+    ".codex/ptl-policy/project-policy.json",
     ".codex/task-pipeline.json"
   ],
   "currentSignal": {
@@ -16,7 +15,7 @@
     "plugin-runtime",
     "order-runtime"
   ],
-  "generatedAt": "2026-05-05T14:03:44Z",
+  "generatedAt": "2026-05-05T15:09:06Z",
   "hits": [
     {
       "decision": "block",

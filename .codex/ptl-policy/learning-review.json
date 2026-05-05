@@ -38,7 +38,7 @@
       "suggestedDecision": "warn",
       "suggestedScope": "domain-pack",
       "title": "Avoid one-off workaround behavior when a reusable path is required",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     },
     {
       "confidence": 0.7,
@@ -84,7 +84,7 @@
       "suggestedDecision": "warn",
       "suggestedScope": "domain-pack",
       "title": "Validate reusable paths instead of landing speculative workarounds",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     },
     {
       "confidence": 0.95,
@@ -144,7 +144,7 @@
       "suggestedDecision": "warn",
       "suggestedScope": "user-global",
       "title": "Prove host/message ingress behavior before assuming transport control",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     },
     {
       "confidence": 0.8,
@@ -197,7 +197,7 @@
       "suggestedDecision": "warn",
       "suggestedScope": "user-global",
       "title": "Keep human confirmation inside the task loop",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     },
     {
       "confidence": 0.8500000000000001,
@@ -244,7 +244,7 @@
       "suggestedDecision": "warn",
       "suggestedScope": "user-global",
       "title": "Continue inside the task loop until the completion gate",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     }
   ],
   "project": "order-skill",
@@ -257,5 +257,5 @@
     "rejected": 0,
     "snoozed": 0
   },
-  "updatedAt": "2026-05-05T15:08:19Z"
+  "updatedAt": "2026-05-05T15:09:06Z"
 }

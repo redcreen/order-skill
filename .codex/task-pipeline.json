@@ -842,6 +842,79 @@
       "kind": "llm",
       "taskId": "T14",
       "title": "message: 可以全量提交一次了"
+    },
+    {
+      "at": "2026-05-05T15:09:06Z",
+      "event": "task-resolved",
+      "outcome": "done",
+      "summary": "Staged all remaining .codex project-assistant state files, committed fa7e9d1, and pushed main to GitHub; working tree is clean.",
+      "taskId": "T14"
+    },
+    {
+      "at": "2026-05-05T15:09:06Z",
+      "event": "ptl-blocked",
+      "preflight": {
+        "changedPaths": [
+          ".codex/ptl-policy/learning-review.json",
+          ".codex/ptl-policy/project-policy.json",
+          ".codex/task-pipeline.json"
+        ],
+        "currentSignal": {
+          "automaticReviewTrigger": "unknown",
+          "gate": "unknown",
+          "signal": "unknown"
+        },
+        "decision": "block",
+        "domainPacks": [
+          "image-generation",
+          "plugin-runtime",
+          "order-runtime"
+        ],
+        "generatedAt": "2026-05-05T15:09:06Z",
+        "hits": [
+          {
+            "decision": "block",
+            "evidence": [
+              ".codex/COMMANDS.md",
+              ".codex/control-surface.json"
+            ],
+            "reason": "required control-surface files are missing",
+            "ruleId": "project-assistant.control-surface.required-files"
+          },
+          {
+            "decision": "warn",
+            "evidence": [
+              "prompt"
+            ],
+            "reason": "Do not replace reusable project behavior with one-off workaround, hardcoded, prompt-only, mask-only, or short-term fallback changes unless the user explicitly accepts that tradeoff.",
+            "ruleId": "learned.learn-147ef7602675"
+          },
+          {
+            "decision": "warn",
+            "evidence": [
+              "hook"
+            ],
+            "reason": "When changing Codex App, VS Code, hook, wrapper, or message-ingress behavior, verify the actual host transport path with a direct smoke before claiming all messages enter the loop.",
+            "ruleId": "learned.learn-6f7260d3c9cb"
+          }
+        ],
+        "learnedRuleCount": 7,
+        "learningReview": {
+          "acceptedRegistry": 7,
+          "error": "",
+          "path": ".codex/ptl-policy/learning-review.json",
+          "pending": 0
+        },
+        "mode": "execute",
+        "officialModules": [],
+        "policyHash": "c7908cc4ef885dab",
+        "policyPath": ".codex/ptl-policy/project-policy.json",
+        "project": "order-skill",
+        "returncode": 2,
+        "schema": "project-assistant.ptl-preflight.v1",
+        "signal": "red"
+      },
+      "taskId": "T02"
     }
   ],
   "objective": "advance the active project-assistant execution line",
@@ -1125,10 +1198,15 @@
         "source": "codex-app-user-prompt-hook"
       },
       "origin": "message-ingress",
-      "status": "pending",
+      "resolution": {
+        "outcome": "done",
+        "resolvedAt": "2026-05-05T15:09:06Z",
+        "summary": "Staged all remaining .codex project-assistant state files, committed fa7e9d1, and pushed main to GitHub; working tree is clean."
+      },
+      "status": "done",
       "title": "message: 可以全量提交一次了",
-      "updatedAt": "2026-05-05T15:08:19Z"
+      "updatedAt": "2026-05-05T15:09:06Z"
     }
   ],
-  "updatedAt": "2026-05-05T15:08:19Z"
+  "updatedAt": "2026-05-05T15:09:06Z"
 }
