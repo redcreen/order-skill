@@ -26,6 +26,7 @@ Passed during the split task:
 - OpenClaw plugin registry refresh confirms source is `/Users/redcreen/Project/order-skill/index.js`
 - OpenClaw order agent self-check used `openai-codex/gpt-5.5` and identified the new hard-execution wrapper path
 
-Pending:
+Published:
 
-- GitHub public repository creation and push
+- GitHub public repository: https://github.com/redcreen/order-skill
+- Initial branch: `main`

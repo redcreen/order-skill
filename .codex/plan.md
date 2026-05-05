@@ -12,8 +12,8 @@ Split `order` into a standalone public GitHub project and prove the new reposito
 | Remove nested host-package assumptions | done | docs and tests refer to the new root package shape |
 | Add project assistant control surface | done | `.codex/*` captures brief, status, plan, and module ownership |
 | Validate local gates | done | structure, compile, plugin, runtime, packaging, OpenClaw load-source, and E2E gates pass |
-| Create public GitHub repo | in_progress | `redcreen/order-skill` exists and is public |
-| Push initial commit | pending | local `main` is pushed to GitHub |
+| Create public GitHub repo | done | `redcreen/order-skill` exists and is public |
+| Push initial commit | done | local `main` is pushed to GitHub |
 
 ## Roadmap Focus
 
