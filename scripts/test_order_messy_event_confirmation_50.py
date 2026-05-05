@@ -824,7 +824,9 @@ def run_openclaw_extract(
         if not isinstance(item, dict):
             raise AssertionError(f"Invalid event item in batch {batch_index}: {item!r}")
         event_key = str(item.get("event_key") or "")
-        match = re.search(r"(\d+)$", event_key)
+        match = re.search(r"MESSY-EVENT-(\d+)", event_key)
+        if not match and item.get("event_index") is not None:
+            match = re.match(r"(\d+)", str(item["event_index"]))
         if not match:
             raise AssertionError(f"Missing event_key in batch {batch_index}: {item!r}")
         extracted[int(match.group(1))] = item

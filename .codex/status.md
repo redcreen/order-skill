@@ -47,6 +47,19 @@ Published:
   - `bash scripts/test_order_plugin_runtime.sh`
   - `python3 -m compileall order/scripts plugins/openclaw-order/scripts scripts`
 
+## 2026-05-05 50-Case Verification And Redeploy
+
+- Confirmed active code and docs do not depend on the old `openclaw-skills/order` or `order-host-plugin` paths; transient `.codex` message and pipeline logs may still contain historical prompt text.
+- Updated `scripts/validate_order_skill_repo.py` so stale standalone reference checks ignore transient project-assistant logs instead of treating copied user prompts as runtime dependencies.
+- Updated `scripts/test_order_messy_event_confirmation_50.py` so LLM event keys remain valid when GPT-5.5 appends a semantic suffix after `MESSY-EVENT-###`.
+- Passed 50-case gates:
+  - `python3 scripts/test_order_lazy_guided_intake_50.py --case-count 50`
+  - `python3 scripts/test_order_chaos_stress_50.py --case-count 50`
+  - `python3 scripts/test_order_llm_lazy_guided_intake_50.py --case-count 50 --batch-size 5 --model openai-codex/gpt-5.5`
+  - `python3 scripts/test_order_llm_chaos_stress_50.py --case-count 50 --batch-size 5 --model openai-codex/gpt-5.5`
+  - `python3 scripts/test_order_messy_event_confirmation_50.py --case-count 50 --llm-extract --batch-size 2 --model openai-codex/gpt-5.5`
+- Note: the first messy-event LLM run with `--batch-size 5` hit an OpenClaw GPT-5.5 timeout on batch 6; the smaller-batch rerun completed with `fallback_used=false` on every batch.
+
 ## 2026-05-05 Wrapper Stability Test
 
 - Refreshed the local OpenClaw plugin registry after the manifest activation update.

@@ -81,6 +81,7 @@
   - Setup: 先创建基础订单，再输入 50 条短事件，覆盖付款、应收、供应商账单、付款、裁片物流、客户发货、退货、退款、扣款、补裁片、返工和无关闲聊
   - Action: 运行 `python3 scripts/test_order_messy_event_confirmation_50.py --case-count 50 --llm-extract --batch-size 5 --model openai-codex/gpt-5.5`
   - Expected Result: 正式业务事件全部先进入 draft；未 prepare、假 token、直接 allocate 都不能写入；最终 `open_drafts=0`、`pending_associations_open=0`、SQLite integrity 为 `ok`
+  - Timeout handling: 如果 OpenClaw 的 GPT-5.5 批次超时，用更小的 `--batch-size` 重跑同一 50 案例；测试仍必须满足 `openai-codex/gpt-5.5` 和 `fallback_used=false`
 
 ## 门禁
 

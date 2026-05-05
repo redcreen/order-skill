@@ -81,6 +81,7 @@ Validate the independent `order-skill` project: docs, runtime, OpenClaw plugin a
   - Setup: create base orders, then input 50 short events covering payments, receivables, supplier bills, supplier payouts, cut-piece logistics, customer shipment, returns, refunds, deductions, replenishment, rework, and unrelated chatter
   - Action: run `python3 scripts/test_order_messy_event_confirmation_50.py --case-count 50 --llm-extract --batch-size 5 --model openai-codex/gpt-5.5`
   - Expected Result: every formal business event enters a draft first; unprepared commits, fake tokens, and direct allocation writes fail; final `open_drafts=0`, `pending_associations_open=0`, and SQLite integrity is `ok`
+  - Timeout handling: if OpenClaw times out on a GPT-5.5 batch, rerun the same 50 cases with a smaller `--batch-size`; the test still requires `openai-codex/gpt-5.5` and `fallback_used=false`
 
 ## Gates
 

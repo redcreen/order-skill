@@ -43,6 +43,10 @@ FORBIDDEN_ACTIVE_STRINGS = [
     ".agents/plugins/marketplace.json",
 ]
 EXCLUDED_TEXT_PARTS = {
+    ".codex/codex-app-loop.json",
+    ".codex/message-ingress.json",
+    ".codex/ptl-policy/",
+    ".codex/task-pipeline.json",
     "docs/devlog/",
     "scripts/validate_order_skill_repo.py",
 }
